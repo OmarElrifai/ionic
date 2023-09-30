@@ -1,41 +1,36 @@
 
-<capacitor-google-map #map class = "map" id="google-map"></capacitor-google-map>
+
 <ion-content  [scrollY]="false">
   <ion-header >
     <ion-toolbar  color="primary" >
       <ion-title >Recipes</ion-title>
     </ion-toolbar>
   </ion-header>
-  
-  <!-- <ion-segment value="all" (ionChange)="segmentChange($event)">
+  <ion-segment value="all" (ionChange)="segmentChange($event)">
     <ion-segment-button value="all">All Recipes</ion-segment-button>
     <ion-segment-button value="favorite">Favourite</ion-segment-button>
-  </ion-segment> -->
+  </ion-segment>
     <cdk-virtual-scroll-viewport itemSize="56" minBufferPx="900" maxBufferPx="1350">
-     
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            
-          </ion-col>
-    
-          
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-select
-            class="always-flip"
-            toggleIcon="caret-down-sharp"
-            interface="popover"
-            label="Icon flips on both modes"
-            placeholder="Select fruit"
-            (ionChange)="updateLocation($event)"
-          >
-            <ion-select-option *ngFor="let location of locations " value={{location.country}}>{{location.country}}</ion-select-option>
-          </ion-select>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+    <ion-list >
+      <ion-item-sliding (ionSwipe)="removeItem(recipe.id)" #slidingItem  *cdkVirtualFor ="let recipe of recipes">
+        <!-- <ion-item  [routerLink] = "['/recipes',recipe.id]"> -->
+        <ion-item [routerlink]="['./recipes/',recipe.id]">
+          <ion-avatar slot="start">
+            <img src={{recipe.imageUrl}}>
+          </ion-avatar>
+          <ion-label>
+            <h1>{{recipe.title}}</h1>
+            <!-- <ion-item>wppw</ion-item> -->
+          </ion-label>
+        </ion-item>
+        <ion-item-options side="end" (click)="onSlide(recipe.id,slidingItem)">
+          <ion-item-option>
+            <ion-icon slot="icon-only" name="archive"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+      
+    </ion-list>
     </cdk-virtual-scroll-viewport>
 
     <!-- <ion-infinite-scroll (ionInfinite)="loadRecipes()">

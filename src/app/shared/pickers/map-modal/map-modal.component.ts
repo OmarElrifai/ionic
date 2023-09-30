@@ -91,7 +91,7 @@ export class MapModalComponent  implements OnInit ,AfterViewInit{
   this.map?.setCamera({
     coordinate: {
       lat: location?.lat || 0,
-      lng: location?.lng || 0
+      lng: location?.lng || 0,
         },
     zoom: 10
   });
