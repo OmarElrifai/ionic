@@ -1,0 +1,10 @@
+
+{
+  "appId": "io.ionic.starter",
+  "appName": "ORif",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}
+

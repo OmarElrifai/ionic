@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      
+    </ion-title>
+  </ion-toolbar>
+</ion-header>  
+
+<ion-content>
+  <ion-buttons>
+    <ion-button (click)="closeModal()"><ion-icon slot="start" name="close-circle-outline">Close</ion-icon></ion-button>
+  </ion-buttons>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div #map class = "map" id="google-map"></div>
+      </ion-col>
+
+      
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-select
+        class="always-flip"
+        toggleIcon="caret-down-sharp"
+        interface="popover"
+        label="Icon flips on both modes"
+        placeholder="Select fruit"
+        (ionChange)="updateLocation($event)"
+      >
+        <ion-select-option *ngFor="let location of locations " value={{location.country}}>{{location.country}}</ion-select-option>
+      </ion-select>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+
+  
+</ion-content>
